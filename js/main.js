@@ -13,4 +13,13 @@ console.log('TEST OKAY');
   * 
   ******************************************************/
 
-var numeriVietati [];
+var numeriVietati = [];
+var numeroRandom = 0;
+var prova = getRandomNumber(1, 100);
+console.log(prova);
+
+
+// CREO LA MIA FUNZIONE CHE GENERA UN NUMERO CASUALE PASSANDOGLI DEI PARAMATRI DI MIN E MAX
+function getRandomNumber (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
