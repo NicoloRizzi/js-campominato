@@ -12,11 +12,17 @@ console.log('TEST OKAY');
   * GENERO 16 NUMERI CASUALI CONTENUTI NELL'INTERVALLO CHE VA DA 1 A 100
   * 
   ******************************************************/
-
+// ARRAY CONTENENTE I NUMERI VIETATI
 var numeriVietati = [];
-var numeroRandom = 0;
-var prova = getRandomNumber(1, 100);
-console.log(prova);
+
+for (var i = 1; i <= 16; i++) {
+  var numeroRandom = getRandomNumber(1, 100);
+  console.table("Il "+ i + "°" + " numero random generato è",numeroRandom);
+  numeriVietati.push(numeroRandom);
+}
+console.log(numeriVietati);
+
+
 
 
 // CREO LA MIA FUNZIONE CHE GENERA UN NUMERO CASUALE PASSANDOGLI DEI PARAMATRI DI MIN E MAX
