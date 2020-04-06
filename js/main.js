@@ -29,6 +29,7 @@ console.table(numeriVietati);
 //console.log("TERMINE DEL CICLO NUMERI RANDOM ARRAY", numeroRandom);
 
 // INIZIALIZZO IL CICLO PER UN NUMERO DI TENTATIVI MASSIMO DI 84 (PER IL MOMENTO)
+/*
 for (var tentativi = 1; tentativi <= 5; tentativi++){
   var numeroRandom = parseInt(prompt("Inserisci il tuo numero da giocare compreso tra 1 e 100"));
   if (numeroRandom < 0 || numeroRandom > 100) {
@@ -42,7 +43,7 @@ for (var tentativi = 1; tentativi <= 5; tentativi++){
  }  numeriUtente.push(numeroRandom);
 }
 console.table("ARRAY DELL'UTENTE",numeriUtente);
-
+*/
 
 
 
