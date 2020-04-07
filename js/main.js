@@ -55,7 +55,15 @@ while ( (numeriUtente.length < possibilita) && (numeriVietati.includes(numeroUte
 
   controlloNumero(numeroUtente);
 
+  // CONTROLLO SUL NUMERO DI TENTATIVI FATTI
+  if (numeroUtente.length === possibilita) {
+    alert ("COMPLIMENTI HAI VINTO");
+  }
 }
+console.log("------GAME OVER------------");
+console.log("Numeri validi inseriti: ", numeriUtente);
+console.log("Tentativi riusciti:", tentativi);
+
 
 
 
@@ -81,16 +89,20 @@ function getRandomNumber (min, max) {
 
 // FUNZIONE PER CONTROLLO DEL VALORE
 function controlloNumero (number){
+
   // CASO DI VERIFICA 1) IL NUMERO E' PRESENETE NELLA LISTA DEI NUMERI VIETATI
   if ( numeriVietati.includes(number) ){
     alert("Peccato hai perso :( \n" + tentativi + " sono le volte che hai provato prima di trovare la bomba" )
   } // CASO DI VERIFICA 2 ) L'UTENTE INSERISCE DUE VOLTE LO STESSO NUMERO E VISULIZZO UN MESSAGGIO DI ALERT
   else if (numeriUtente.includes(number) ){
     alert("ATTENZIONE, il numero è già presente nell'elenco. Inserisci un nuovo numero!")
-  } // CASO DI VERIFICA 3) IL NUMERO E' VALIDO
+  } else if (numeroUtente < 1 || numeroUtente > 100){
+    alert("ATTENZIONE IL NUMERO E' FUORI DAL RANGE")
+  }// CASO DI VERIFICA 3) IL NUMERO E' VALIDO
   else if (numeriUtente.includes(number) === false) {
     numeriUtente.push(number);
     // UPDATE DEL NUMERO TENTATIVI
     tentativi++;
   }
 }
+
