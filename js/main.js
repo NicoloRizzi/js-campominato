@@ -8,9 +8,11 @@
 
  /******************************************************
   * PSEUDO CODICE:
-  * GENERO 16 NUMERI CASUALI CONTENUTI NELL'INTERVALLO CHE VA DA 1 A 100
+  * GENERO 16 NUMERI CASUALI
+  * VERIFICO CHE NON SIANO PRESNTI NUMERI DOPPI
   * CHIEDO ALL'UTENTE UN NUMERO DA INSERIRE
   * CONTROLLO CHE RIENTRI NEL RANGE DA 1 A 100
+  * 
   * 
   ******************************************************/
 /**
@@ -20,13 +22,19 @@
 var numeriVietati = [];
 // ARRAY CONTENTENTE I NUMERI DICHIARATI DAL GIOCATORE
 var numeriUtente = [];
-// VARIABILE PER ASSEGNAMENTI DEI NUMERI CASUALI SIA ARRAY VIETATI CHE NUMERI UTENTE
-var numeroRandom = 0;
+// VARIABILE PER ASSEGNAMENTI DEI NUMERI DELL'UTENTE
+var numeroUtente = 0;
+
+// VARIABILE CONTENENTE LE POSSIBILITA'
+var possibilita = 84;
+
+// VARIABILE CONTENENTE IL NUMERO DI TENTATIVI
+var tentativi = 0;
 
 // INIZIALIZZO LA GENERAZIONE DI UN CICLO PER 16 NUMERI
 
-for (var i = 1; i <= 16; i++) {
-  var numeroRandom = randomNumber (1, 100);
+while (numeriVietati.length < 16) {
+  var numeroRandom = getRandomNumber (1, 100);
   
   // CONTROLLO CHE NON VENGONO INSERITI 2 NUMERI IDENTICI NELL'ARRAY DEI NUMERI VIETATI
   if (numeriVietati.includes(numeroRandom) == false) {
@@ -35,6 +43,19 @@ for (var i = 1; i <= 16; i++) {
 
 }
 console.log("Lista Bombe: ", numeriVietati);
+
+
+/**
+ * SEZIONE RICHIESTA DEI NUMERI DA GIOCARE
+ */
+
+
+while ( (numeriUtente.length < possibilita) && (numeriVietati.includes(numeroUtente) === false) ) {
+  numeroUtente = parseInt( prompt("Inserisci un numero da 1 a 100"));
+
+  controlloNumero(numeroUtente);
+
+}
 
 
 
@@ -53,6 +74,23 @@ console.log("Lista Bombe: ", numeriVietati);
  * FUNZIONI
  */
 // GENERARE NUMERI CASUALI PASSANDO 2 PARAMETRI DI MINIMO E MASSIMO (CON MASSIMO E MINIMO INCLUSI)
-function randomNumber (min, max) {
+function getRandomNumber (min, max) {
   return Math.floor(Math.random () * max - min + 1) + min;
+}
+
+
+// FUNZIONE PER CONTROLLO DEL VALORE
+function controlloNumero (number){
+  // CASO DI VERIFICA 1) IL NUMERO E' PRESENETE NELLA LISTA DEI NUMERI VIETATI
+  if ( numeriVietati.includes(number) ){
+    alert("Peccato hai perso :( \n" + tentativi + " sono le volte che hai provato prima di trovare la bomba" )
+  } // CASO DI VERIFICA 2 ) L'UTENTE INSERISCE DUE VOLTE LO STESSO NUMERO E VISULIZZO UN MESSAGGIO DI ALERT
+  else if (numeriUtente.includes(number) ){
+    alert("ATTENZIONE, il numero è già presente nell'elenco. Inserisci un nuovo numero!")
+  } // CASO DI VERIFICA 3) IL NUMERO E' VALIDO
+  else if (numeriUtente.includes(number) === false) {
+    numeriUtente.push(number);
+    // UPDATE DEL NUMERO TENTATIVI
+    tentativi++;
+  }
 }
