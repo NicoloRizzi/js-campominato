@@ -16,6 +16,31 @@
   * 
   ******************************************************/
 /**
+ * SEZIONE DI IMPOSTAZIONE DELLA DIFFICOLTA'
+ * SCEGLIERE LA DIFFICOLTA' TRAMITE PROMPT ATTRAVERSO LA SCELTA DI 3 VALORI 0 (FACILE),1(NORMALE),2 (DIFFICILE)
+ * SULLA BASE DEL VALORE OTTENUTO VARIO IL RANGE DELL'INTERVALLO DEI NUMERI
+ */
+var difficolta = parseInt(prompt("Inserisci la difficolta'"));
+var max;
+while (difficolta == 0 || difficolta == 1 || difficolta == 2){
+  if (difficolta === 0) {
+    alert("Hai impostato la difficoltà FACILE, il tuo range di numeri varia da 1 a 100");
+    max = 100;
+  } else if (difficolta === 1) {
+    alert("Hai impostato la difficoltà NORMALE, il tuo range di numeri varia da 1 a 80");
+    max = 80;
+  } else if (difficolta === 2) {
+    alert("Hai impostato la difficoltà NORMALE, il tuo range di numeri varia da 1 a 50");
+    max = 50;
+  } else {
+    alert("VALORE NON VALIDO");
+  }
+}
+
+
+
+
+/**
  * SEZIONE DI SETUP E CREAZIONE BOMBE
  */ 
 // ARRAY CONTENENTE I NUMERI VIETATI
@@ -34,7 +59,7 @@ var tentativi = 0;
 // INIZIALIZZO LA GENERAZIONE DI UN CICLO PER 16 NUMERI
 
 while (numeriVietati.length < 16) {
-  var numeroRandom = getRandomNumber (1, 100);
+  var numeroRandom = getRandomNumber (100);
   
   // CONTROLLO CHE NON VENGONO INSERITI 2 NUMERI IDENTICI NELL'ARRAY DEI NUMERI VIETATI
   if (numeriVietati.includes(numeroRandom) == false) {
@@ -82,8 +107,8 @@ console.log("Tentativi riusciti:", tentativi);
  * FUNZIONI
  */
 // GENERARE NUMERI CASUALI PASSANDO 2 PARAMETRI DI MINIMO E MASSIMO (CON MASSIMO E MINIMO INCLUSI)
-function getRandomNumber (min, max) {
-  return Math.floor(Math.random () * max - min + 1) + min;
+function getRandomNumber (max) {
+  return Math.floor(Math.random () * max ) + 1;
 }
 
 
