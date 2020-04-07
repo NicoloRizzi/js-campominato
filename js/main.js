@@ -10,44 +10,49 @@
   * PSEUDO CODICE:
   * GENERO 16 NUMERI CASUALI CONTENUTI NELL'INTERVALLO CHE VA DA 1 A 100
   * CHIEDO ALL'UTENTE UN NUMERO DA INSERIRE
+  * CONTROLLO CHE RIENTRI NEL RANGE DA 1 A 100
   * 
   ******************************************************/
+/**
+ * SEZIONE DI SETUP E CREAZIONE BOMBE
+ */ 
 // ARRAY CONTENENTE I NUMERI VIETATI
 var numeriVietati = [];
 // ARRAY CONTENTENTE I NUMERI DICHIARATI DAL GIOCATORE
 var numeriUtente = [];
 // VARIABILE PER ASSEGNAMENTI DEI NUMERI CASUALI SIA ARRAY VIETATI CHE NUMERI UTENTE
 var numeroRandom = 0;
-// INIZIALIZZO LA GENERAZIONE DI UN CICLO PER 16 NUMERI (PER IL MOMENTO)
+
+// INIZIALIZZO LA GENERAZIONE DI UN CICLO PER 16 NUMERI
+
 for (var i = 1; i <= 16; i++) {
-  numeroRandom = getRandomNumber(1, 100);
-  //console.table("Il "+ i + "°" + " numero random generato è",numeroRandom);
-  numeriVietati.push(numeroRandom);
-}
-// PRINT DELL'ARRAY VIETATI
-console.table(numeriVietati);
-//console.log("TERMINE DEL CICLO NUMERI RANDOM ARRAY", numeroRandom);
-
-// INIZIALIZZO IL CICLO PER UN NUMERO DI TENTATIVI MASSIMO DI 84 (PER IL MOMENTO)
-/*
-for (var tentativi = 1; tentativi <= 5; tentativi++){
-  var numeroRandom = parseInt(prompt("Inserisci il tuo numero da giocare compreso tra 1 e 100"));
-  if (numeroRandom < 0 || numeroRandom > 100) {
-    while (numeroRandom < 0 || numeroRandom > 100) {
-      var numeroRandom = parseInt(prompt("Attenzione hai inserito un numero che non è compreso!"));
-      console.log("QUI SEI NEL CICLO DI ERRORE",numeroRandom);
-      if (numeroRandom >= 0 || numeroRandom <= 100) {
-        numeriUtente.push(numeroRandom);
-   }  
+  var numeroRandom = randomNumber (1, 100);
+  
+  // CONTROLLO CHE NON VENGONO INSERITI 2 NUMERI IDENTICI NELL'ARRAY DEI NUMERI VIETATI
+  if (numeriVietati.includes(numeroRandom) == false) {
+    numeriVietati.push (numeroRandom);
   }
- }  numeriUtente.push(numeroRandom);
+
 }
-console.table("ARRAY DELL'UTENTE",numeriUtente);
-*/
+console.log("Lista Bombe: ", numeriVietati);
 
 
 
-// CREO LA MIA FUNZIONE CHE GENERA UN NUMERO CASUALE PASSANDOGLI DEI PARAMATRI DI MIN E MAX
-function getRandomNumber (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * FUNZIONI
+ */
+// GENERARE NUMERI CASUALI PASSANDO 2 PARAMETRI DI MINIMO E MASSIMO (CON MASSIMO E MINIMO INCLUSI)
+function randomNumber (min, max) {
+  return Math.floor(Math.random () * max - min + 1) + min;
 }
