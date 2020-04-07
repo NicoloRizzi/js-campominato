@@ -55,7 +55,7 @@ var numeriUtente = [];
 var numeroUtente = 0;
 
 // VARIABILE CONTENENTE LE POSSIBILITA'
-var possibilita = 84;
+var possibilita = max - 16;
 
 // VARIABILE CONTENENTE IL NUMERO DI TENTATIVI
 var tentativi = 0;
@@ -80,7 +80,7 @@ console.log("Lista Bombe: ", numeriVietati);
 
 
 while ( (numeriUtente.length < possibilita) && (numeriVietati.includes(numeroUtente) === false) ) {
-  numeroUtente = parseInt( prompt("Inserisci un numero da 1 a 100"));
+  numeroUtente = parseInt( prompt("Inserisci un numero da 1 a " + max));
 
   controlloNumero(numeroUtente);
 
