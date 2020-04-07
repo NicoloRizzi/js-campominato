@@ -22,18 +22,22 @@
  */
 var difficolta = parseInt(prompt("Inserisci la difficolta'"));
 var max;
-while (difficolta == 0 || difficolta == 1 || difficolta == 2){
+while (difficolta !== 0 || difficolta !== 1 || difficolta !==2){
   if (difficolta === 0) {
     alert("Hai impostato la difficoltà FACILE, il tuo range di numeri varia da 1 a 100");
     max = 100;
+    break;
   } else if (difficolta === 1) {
     alert("Hai impostato la difficoltà NORMALE, il tuo range di numeri varia da 1 a 80");
     max = 80;
+    break;
   } else if (difficolta === 2) {
     alert("Hai impostato la difficoltà NORMALE, il tuo range di numeri varia da 1 a 50");
     max = 50;
+    break;
   } else {
     alert("VALORE NON VALIDO");
+    difficolta = parseInt(prompt("Inserisci correttamente la difficolta'"));
   }
 }
 
