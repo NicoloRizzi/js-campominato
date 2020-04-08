@@ -125,7 +125,7 @@ function controlloNumero (number){
   } // CASO DI VERIFICA 2 ) L'UTENTE INSERISCE DUE VOLTE LO STESSO NUMERO E VISULIZZO UN MESSAGGIO DI ALERT
   else if (numeriUtente.includes(number) ){
     alert("ATTENZIONE, il numero è già presente nell'elenco. Inserisci un nuovo numero!")
-  } else if (numeroUtente < 1 || numeroUtente > 100){
+  } else if (numeroUtente < 1 || numeroUtente > max){
     alert("ATTENZIONE IL NUMERO E' FUORI DAL RANGE")
   }// CASO DI VERIFICA 3) IL NUMERO E' VALIDO
   else if (numeriUtente.includes(number) === false) {
